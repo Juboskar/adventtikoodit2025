@@ -1,21 +1,16 @@
-const fs = require("fs");
+var input = require("fs").readFileSync("aoc1/input.txt", "utf8").split("\n");
 
-var input = fs.readFileSync("aoc1/input.txt", "utf8").split("\n");
-
-var sum = 50;
+var pointer = 50;
 var counter = 0;
 input.forEach((i) => {
   var value = Number(i.substring(1));
 
-  value = i[0] === "L" ? -value : value;
-
-  if (Math.max(sum, sum + value) > 0 && Math.min(sum, sum + value) < 0) {
-    counter++;
-  }
-
-  sum += value;
-  counter += Math.floor(Math.abs(sum) / 100) + (sum === 0);
-  sum = sum % 100;
+  var changed = pointer + (i[0] === "L" ? -value : value);
+  counter +=
+    Math.floor(Math.abs(changed) / 100) +
+    (changed === 0) +
+    (Math.max(pointer, changed) > 0 && Math.min(pointer, changed) < 0);
+  pointer = changed % 100;
 });
 
 console.log(counter);

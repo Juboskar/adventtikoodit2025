@@ -1,6 +1,4 @@
-const fs = require("fs");
-
-var input = fs.readFileSync("aoc1/input.txt", "utf8").split("\n");
+var input = require("fs").readFileSync("aoc1/input.txt", "utf8").split("\n");
 
 var sum = 50;
 var counter = 0;
