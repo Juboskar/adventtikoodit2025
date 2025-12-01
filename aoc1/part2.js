@@ -14,10 +14,7 @@ input.forEach((i) => {
   }
 
   sum += value;
-  counter += Math.floor(Math.abs(sum) / 100);
-  if (sum === 0) {
-    counter++;
-  }
+  counter += Math.floor(Math.abs(sum) / 100) + (sum === 0);
   sum = sum % 100;
 });
 
